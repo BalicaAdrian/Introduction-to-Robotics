@@ -23,8 +23,8 @@ void loop() {
    int valPotGreen = map(analogValueGreen, 0, 1023, 0, 255);
    int valPotBlue = map(analogValueBlue, 0, 1023, 0, 255);
 
-   analogWrite(redPin,valPotRed); 
-   analogWrite(greenPin,valPotGreen);
-   analogWrite(bluePin,valPotBlue);
+   analogWrite(redPin, valPotRed); 
+   analogWrite(greenPin, valPotGreen);
+   analogWrite(bluePin, valPotBlue);
     
 }
