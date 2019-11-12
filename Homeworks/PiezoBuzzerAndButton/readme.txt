@@ -1,0 +1,2 @@
+I used a passive piezo buzzer as analog input( as in the project Knock!) to activate a sound from a piezo active buzzer which should start after 5s after the "knock"
+withou delay. Also i have a button to stop the sound.
