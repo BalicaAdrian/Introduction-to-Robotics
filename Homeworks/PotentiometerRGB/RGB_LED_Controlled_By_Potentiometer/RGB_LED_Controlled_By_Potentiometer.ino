@@ -7,9 +7,9 @@ const int potGreenPin = A1;
 const int potBluePin = A2;
 
 void setup() {
-    pinMode(redPin,OUTPUT);
-    pinMode(greenPin,OUTPUT);
-    pinMode(bluePin,OUTPUT);
+    pinMode(redPin, OUTPUT);
+    pinMode(greenPin, OUTPUT);
+    pinMode(bluePin, OUTPUT);
 
 }
 
@@ -17,7 +17,7 @@ void loop() {
 
   int analogValueRed = analogRead(potRedPin);
   int analogValueGreen = analogRead(potGreenPin);
-  int analogValueBlue = analogRead( potBluePin);
+  int analogValueBlue = analogRead(potBluePin);
 
    int valPotRed = map(analogValueRed, 0, 1023, 0, 255);
    int valPotGreen = map(analogValueGreen, 0, 1023, 0, 255);
