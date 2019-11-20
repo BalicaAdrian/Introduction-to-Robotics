@@ -106,8 +106,15 @@ void loop() {
   buttonValue = digitalRead(buttonPin);
 
   for (int i = 0; i < 4; i++){
-      showDigit(i);
-      displayNumber(outputDigit[i],outputDP[i]);
+      if(i == currentDisplay){
+        showDigit(i);
+        displayNumber(outputDigit[i],0); 
+      }
+      else{
+        showDigit(i);
+       displayNumber(outputDigit[i],outputDP[i]);
+        
+      }
       delay(9);
 
   }
