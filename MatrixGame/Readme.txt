@@ -33,3 +33,5 @@ Also you will have 3 lives to play with !
 
 And for ending, I will leave to you a little secret: the key of the game is to stay how much you can on middle of map to have the ability to run faster to corners.
    
+PHOTOS OF PROJECT: https://imgur.com/a/YhZYnpL
+VIDEO :  https://www.youtube.com/watch?v=BRmS1RFIszM
