@@ -56,8 +56,9 @@ long lastStarFall = 0;
 
 //default values for game score, lives and level
 int Score = 0;
-int Lives = 3;
+int lives = 3;
 int level = 0;
+bool livesHasChanged=false;
 
 
 //timers for increase speed of falling and generete stars
@@ -88,7 +89,7 @@ int xAxisValue = 0;
 int yAxisValue = 0;
 int buttonValue = 0;
 
-
+int positionSettings = 1;
 int position = 1;
 int lastButtonState = 0;
 int buttonState = 0;
@@ -115,7 +116,7 @@ int adresaEeprom = 0;
 int SelectedLevel = 1;
 
 const String Meniuri[] = {" Start", ">Start", " HS", ">HS",
-                          " Settings", ">Settings", " Info", ">Info", "Lives:", "Level:", "Score:",
+                          " Settings", ">Settings", " Info", ">Info", "lives:", "Level:", "Score:",
                           "highScore:", "Starting level:"
                          };
 //initilize matrix
@@ -336,7 +337,7 @@ void starsFalls(){
   
   for( int j = MIN_LEN_MATRIX ; j <= MAX_LEN_MATRIX; j++)
       if(matrix[MAX_LEN_MATRIX][j] == 1){
-        Lives --;
+        lives --;
       }
 
      
@@ -380,7 +381,7 @@ void treeChristmas(){
 }
 
 void startGame(){
-  if( Lives != 0){
+  if( lives != 0){
       generateRandomFallsStars(timeToRegenerate);
       if( millis() - lastFalls > timeToFalls ){
       updatePositionOFPlayer();
@@ -502,7 +503,10 @@ void principalMenu()//there is where I initlize variable for starting game as le
         lcd.clear();
         StartGameTime = millis();
         Score =0;
-        Lives = 3;
+        if(livesHasChanged == false){
+          lives = 3;
+        }
+        livesHasChanged = false;
         level = setLevel;
         if(level == 0){
            timeToRegenerate = 2200;
@@ -619,19 +623,108 @@ int buttonPressed() {
   }
 }
 
+void settingsChange() {
+  int xValue = analogRead(xAxisPin);
+  if (xValue < minThreshold && joyMoved == false) {
+    if (positionSettings < 2) {
+      positionSettings++;
+    } else {
+      positionSettings = 1;
+    }
+    joyMoved = true;
+  }
+
+  if (xValue > maxThreshold && joyMoved == false) {
+    if (positionSettings > 1) {
+      positionSettings--;
+    } else {
+      positionSettings = 2;
+    }
+    joyMoved = true;
+  }
+
+  if (xValue >= minThreshold && xValue <= maxThreshold) {
+    joyMoved = false;
+  }
+}
+
+void changeLives(){
+  {
+  int yValue = analogRead(yAxisPin);
+  if (yValue < minThreshold && YjoyMoved == false) {
+    if (lives < 3) {
+      livesHasChanged = true;
+      lives++;
+    } else {
+      lives = 1;
+      livesHasChanged=true;
+    }
+    YjoyMoved = true;
+  }
+
+  if (yValue > maxThreshold && YjoyMoved == false) {
+    if (lives > 1) {
+      livesHasChanged=true;
+      lives--;
+    } else {
+      lives = 3;
+      livesHasChanged=true;
+    }
+    YjoyMoved = true;
+  }
+
+  if (yValue >= minThreshold && yValue <= maxThreshold) {
+    YjoyMoved = false;
+  }
+}
+}
+
 void settingsMenu() {
+  settingsChange();
+  if( positionSettings == 1){
+    
+  
   lcd.setCursor(0, 0);
-  lcd.print("Level:");
+  lcd.print(">Level:");
   lcd.print(setLevel);
   changeLevel();
   //Serial.println("da");
   //Serial.print(buttonPressed());
+
+  lcd.setCursor(0, 1);
+  lcd.print(" Lives:");
+  lcd.print(lives);
   if (buttonPressed() == 1 && millis() - inputTime > 350) {
     //delay(250);
     inputTime = millis();
     lcd.clear();
     position = 1;
   }
+}
+
+if( positionSettings == 2){
+    
+  
+  lcd.setCursor(0, 0);
+  lcd.print(" Level:");
+  lcd.print(setLevel);
+  //changeLevel();
+  //Serial.println("da");
+  //Serial.print(buttonPressed());
+
+  lcd.setCursor(0, 1);
+  lcd.print(">Lives:");
+  lcd.print(lives);
+  changeLives();
+  if (buttonPressed() == 1 && millis() - inputTime > 350) {
+    //delay(250);
+    inputTime = millis();
+    lcd.clear();
+    position = 1;
+  }
+}
+
+
 }
 
 void highScoreMenu() {
@@ -651,13 +744,13 @@ void highScoreMenu() {
 
 
 void startMenu() {
-  if (Lives != 0) {
+  if (lives != 0) {
     startGame();
 
     lcd.setCursor(0, 0);
     lcd.print("Lives:");
     lcd.setCursor(6, 0);
-    lcd.print(Lives);
+    lcd.print(lives);
     lcd.setCursor(8, 0);
     lcd.print("Level:");
     lcd.setCursor(14, 0);
@@ -708,8 +801,8 @@ void refreshF() {
 void infoMenu(){
   lcd.setCursor(0, 0);
   lcd.print("Craciun fericit!");
-  lcd.setCursor(3, 1);  
-  lcd.print("A S M I");
+  lcd.setCursor(0, 1);  
+  lcd.print("@UnibucRobotics");
   
   if (buttonPressed() == 1 && millis() - inputTime > 350) {
     //delay(250);
