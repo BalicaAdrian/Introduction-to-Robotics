@@ -16,6 +16,7 @@ HOW TO PLAY.
 You will have a simple menu with 4 options:
 	-start game
 	-set level
+	-set the lives( between 1-3) to start with
 	-hs which is the highscore
 	-info ( a massage sent for you)
 
