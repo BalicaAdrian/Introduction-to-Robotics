@@ -116,7 +116,7 @@ int adresaEeprom = 0;
 int SelectedLevel = 1;
 
 const String Meniuri[] = {" Start", ">Start", " HS", ">HS",
-                          " Settings", ">Settings", " Info", ">Info", "lives:", "Level:", "Score:",
+                          " Settings", ">Settings", " Info", ">Info", "Lives:", "Level:", "Score:",
                           "highScore:", "Starting level:"
                          };
 //initilize matrix
@@ -165,7 +165,7 @@ void generateRandomFallsStars(int timeLevel){
 
 void starsFalls(){ 
 
-  int playerLocation  = playerPosition;
+  int playerLocation  = playerPosition; // I take player position to  create the colision
 
   for(int i = MAX_LEN_MATRIX; i > MIN_LEN_MATRIX ; i--){
      for(int j = MIN_LEN_MATRIX; j <= MAX_LEN_MATRIX; j++){
@@ -292,7 +292,6 @@ void starsFalls(){
      }
   }
 
-// -- final incercare ---
   
   if( Score > 5 && increaseTimeFalls == 0){
     timeToRegenerate = timeToRegenerate - 900;
@@ -623,7 +622,7 @@ int buttonPressed() {
   }
 }
 
-void settingsChange() {
+void settingsChange() {   // thsi function si to move between settings options
   int xValue = analogRead(xAxisPin);
   if (xValue < minThreshold && joyMoved == false) {
     if (positionSettings < 2) {

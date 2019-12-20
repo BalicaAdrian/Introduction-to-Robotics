@@ -1,8 +1,8 @@
-Name of project: Falling Stars
+	Name of project: Falling Stars
 Description: the purpose of the game is to collect the falling stars( the random led which drop down) with your arms( it should be something like  basket)
 	     You will have 3 lives. Atfer e perioad of time ( around 7 s) , speed will increase( as a difficult/ level stage). 
 	     You lose a life if you miss a falling star. After all 3 lives are gone, you lose . Every time you catch a start your score will be increase.
-Hardware: 
+   HARDWARE---------------------------------------------------------------------------------------------------------------------
 	- 8x8 LED Matrix
 	-LCD
 	-joystick
@@ -12,7 +12,7 @@ Hardware:
 	- arduino uno
 	
 
-HOW TO PLAY.
+	HOW TO PLAY.----------------------------------------------------------------------------------------------------------
 You will have a simple menu with 4 options:
 	-start game
 	-set level
@@ -34,5 +34,6 @@ Also you will have 3 lives to play with !
 
 And for ending, I will leave to you a little secret: the key of the game is to stay how much you can on middle of map to have the ability to run faster to corners.
    
+	MEDIA---------------------------------------------------------------------------------------------------------------------
 PHOTOS OF PROJECT: https://imgur.com/a/YhZYnpL
-VIDEO :  https://www.youtube.com/watch?v=BRmS1RFIszM
+VIDEO :  https://www.youtube.com/watch?v=o6UkWxphmlc
