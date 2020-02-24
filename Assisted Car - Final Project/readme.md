@@ -41,5 +41,5 @@ The following table represents the materials which were used in creation of the 
 
 
 
-[Images](https://imgur.com/gallery/K00RQCb)/
-[Demonstration video]https://www.youtube.com/watch?v=TqcwlZundTk)
+[Images](https://imgur.com/gallery/K00RQCb)  
+[Demonstration video](https://www.youtube.com/watch?v=TqcwlZundTk)
